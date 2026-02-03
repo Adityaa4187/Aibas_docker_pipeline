@@ -1,0 +1,38 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-numpy \
+    python3-pandas \
+    python3-bs4 \
+    python3-requests \
+    python3-matplotlib \
+    python3-sklearn \
+    python3-joblib \
+    python3-statsmodels \
+    git \
+    nano \
+    && apt-get clean
+
+RUN pip install --break-system-packages tensorflow
+
+# Root project structure inside container
+WORKDIR /
+
+# Copy ALL code directories
+COPY main_train/ /main_train
+COPY scrapper/ /scrapper
+COPY preprocessing/ /preprocessing
+COPY plots/ /plots
+COPY splitting/ /splitting
+COPY load_and_process/ /load_and_process
+COPY models/ /models
+
+# Default execution directory
+WORKDIR /main_train
+
+ENV PYTHONPATH="/:/main_train:/scrapper:/preprocessing:/plots:/splitting:/load_and_process:/models"
+
+# Default start command
+CMD ["python3", "main_train.py"]

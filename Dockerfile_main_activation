@@ -1,0 +1,39 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-numpy \
+    python3-pandas \
+    python3-bs4 \
+    python3-requests \
+    python3-matplotlib \
+    python3-sklearn \
+    python3-joblib \
+    python3-statsmodels \
+    git \
+    nano \
+    && apt-get clean
+
+RUN pip install --break-system-packages tensorflow
+
+# Root project structure inside container
+WORKDIR /
+
+# Copy ALL code directories
+COPY main_activation/ /main_activation
+COPY activation_inference/ /activation_inference
+COPY artifacts/ /artifacts
+COPY early_risk/ /early_risk
+COPY out/ /out
+COPY saved_models/ /saved_models
+COPY plots/ /plots
+
+
+# Default execution directory
+WORKDIR /main_activation
+
+ENV PYTHONPATH="/:/main_activation:/artifacts:/early_risk:/plots:/saved_models:/"
+
+# Default start command
+CMD ["python3", "main_activation.py"]

@@ -1,0 +1,9 @@
+services:
+  full:
+    image: adityaa0403/aibas_codebase:latest
+    container_name: main_activation_full_app
+
+    volumes:
+      - ./reports:/reports
+
+    working_dir: /main_activation

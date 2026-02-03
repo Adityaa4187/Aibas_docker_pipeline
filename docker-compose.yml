@@ -1,0 +1,12 @@
+services:
+  main_train:
+    image: adityaa0403/aibas_knowledgebase:latest
+    container_name: main_train_full_app
+
+    volumes:
+      - ./data:/data
+      - ./artifacts:/artifacts
+      - ./reports:/reports
+      - ./out:/out
+
+    working_dir: /main_train
