@@ -77,7 +77,14 @@ This step generates model evaluation reports and plots.
 ```bash
 docker compose up
 ```
-Models are already pre-trained and packaged for inference.
+
+After successful execution, results will be available in the following folders:
+
+1. data/ (Scrapped data which)
+2. reports/ (Preprocessing and model evaluation plots)
+3. saved_models/ (Saved trained models)
+4. out/ (Intermediate and processed datasets)
+These folders are created/updated automatically.
 
 ## Step 5 — Run the Activation (Inference) Pipeline
 This runs attrition risk prediction using the packaged trained models
@@ -85,6 +92,9 @@ This runs attrition risk prediction using the packaged trained models
 ```bash
 docker compose -f docker-compose_activation.yml up
 ```
+After successful execution, results will be available in the following folders:
+1. reports/ (activation_risk_report.csv)
+
 
 ### Architecture
 1. Training Container
@@ -97,4 +107,5 @@ docker compose -f docker-compose_activation.yml up
 3. Saves prediction results to reports/
 
 This reflects real-world ML deployment practices where training and inference environments are separated.
+
 
