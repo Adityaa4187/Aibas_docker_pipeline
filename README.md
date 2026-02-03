@@ -64,8 +64,8 @@ docker images
 
 ## Step 3 — Clone This Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/Adityaa4187/Aibas_docker_pipeline.git
+cd Aibas_docker_pipeline
 ```
 
 This repository contains the Docker Compose files used to run the containers.
@@ -97,3 +97,4 @@ docker compose -f docker-compose_activation.yml up
 3. Saves prediction results to reports/
 
 This reflects real-world ML deployment practices where training and inference environments are separated.
+
