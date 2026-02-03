@@ -1,5 +1,6 @@
 services:
   main_train:
+    platform: linux/amd64
     image: adityaa0403/aibas_knowledgebase:latest
     container_name: main_train_full_app
 
